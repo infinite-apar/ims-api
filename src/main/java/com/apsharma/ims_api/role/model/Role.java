@@ -1,4 +1,4 @@
-package com.apsharma.ims_api.model;
+package com.apsharma.ims_api.role.model;
 
 
 import jakarta.persistence.*;

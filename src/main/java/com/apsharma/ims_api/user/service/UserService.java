@@ -1,9 +1,9 @@
-package com.apsharma.ims_api.service;
+package com.apsharma.ims_api.user.service;
 
-import com.apsharma.ims_api.model.Role;
-import com.apsharma.ims_api.model.User;
-import com.apsharma.ims_api.repository.RoleRepo;
-import com.apsharma.ims_api.repository.UserRepo;
+import com.apsharma.ims_api.role.model.Role;
+import com.apsharma.ims_api.user.model.User;
+import com.apsharma.ims_api.role.repository.RoleRepo;
+import com.apsharma.ims_api.user.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

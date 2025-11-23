@@ -1,6 +1,6 @@
-package com.apsharma.ims_api.repository;
+package com.apsharma.ims_api.role.repository;
 
-import com.apsharma.ims_api.model.Role;
+import com.apsharma.ims_api.role.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

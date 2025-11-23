@@ -1,8 +1,8 @@
-package com.apsharma.ims_api.service;
+package com.apsharma.ims_api.role.service;
 
 
-import com.apsharma.ims_api.model.Role;
-import com.apsharma.ims_api.repository.RoleRepo;
+import com.apsharma.ims_api.role.model.Role;
+import com.apsharma.ims_api.role.repository.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

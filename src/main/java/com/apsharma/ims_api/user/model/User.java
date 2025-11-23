@@ -1,6 +1,9 @@
-package com.apsharma.ims_api.model;
+package com.apsharma.ims_api.user.model;
 
+import com.apsharma.ims_api.role.model.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +23,14 @@ public class User {
     @Column(unique = true)
     private String username;
     private String password;
+
+    private String firstName;
+    private String lastName;
+
+    private String email;
+
+    @Positive
+    private double phoneNumber;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

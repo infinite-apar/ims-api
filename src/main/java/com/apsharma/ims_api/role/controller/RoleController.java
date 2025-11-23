@@ -1,7 +1,7 @@
-package com.apsharma.ims_api.controller;
+package com.apsharma.ims_api.role.controller;
 
-import com.apsharma.ims_api.model.Role;
-import com.apsharma.ims_api.service.RoleService;
+import com.apsharma.ims_api.role.model.Role;
+import com.apsharma.ims_api.role.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

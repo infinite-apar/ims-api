@@ -1,7 +1,7 @@
-package com.apsharma.ims_api.controller;
+package com.apsharma.ims_api.user.controller;
 
-import com.apsharma.ims_api.model.User;
-import com.apsharma.ims_api.service.UserService;
+import com.apsharma.ims_api.user.model.User;
+import com.apsharma.ims_api.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

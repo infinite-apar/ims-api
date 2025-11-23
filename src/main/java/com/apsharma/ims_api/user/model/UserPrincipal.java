@@ -1,6 +1,7 @@
-package com.apsharma.ims_api.model;
+package com.apsharma.ims_api.user.model;
 
 
+import com.apsharma.ims_api.role.model.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

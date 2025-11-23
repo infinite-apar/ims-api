@@ -1,8 +1,8 @@
-package com.apsharma.ims_api.service;
+package com.apsharma.ims_api.user.service;
 
-import com.apsharma.ims_api.model.User;
-import com.apsharma.ims_api.model.UserPrincipal;
-import com.apsharma.ims_api.repository.UserRepo;
+import com.apsharma.ims_api.user.model.User;
+import com.apsharma.ims_api.user.model.UserPrincipal;
+import com.apsharma.ims_api.user.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
