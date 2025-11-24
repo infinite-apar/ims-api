@@ -2,6 +2,7 @@ package com.apsharma.ims_api.user.controller;
 
 import com.apsharma.ims_api.user.model.User;
 import com.apsharma.ims_api.user.service.UserService;
+import com.apsharma.ims_api.util.ApiResponseBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -20,9 +22,14 @@ public class UserController {
     private UserService service;
 
     @GetMapping(value="/users")
-    public ResponseEntity<List<User>> getAllUsers() throws SQLException{
+    public ResponseEntity<Map<String, Object>> getAllUsers() throws SQLException{
         List<User> users = service.getAllUser();
-        return ResponseEntity.status(HttpStatus.CREATED).body(users);
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponseBuilder()
+                .status(HttpStatus.OK)
+                .message("Users fetched successfully")
+                .data(users)
+                .build()
+        );
 
     }
 //

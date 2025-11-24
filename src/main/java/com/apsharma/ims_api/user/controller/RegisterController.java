@@ -3,6 +3,7 @@ package com.apsharma.ims_api.user.controller;
 
 import com.apsharma.ims_api.user.model.User;
 import com.apsharma.ims_api.user.service.UserService;
+import com.apsharma.ims_api.util.ApiResponseBuilder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
+import java.util.Map;
 
 
 @RestController
@@ -24,16 +26,26 @@ public class RegisterController {
     private UserService userService;
 
     @PostMapping(value  ="/register")
-    public ResponseEntity<User> registerUser(@RequestBody @Valid User user) throws JsonProcessingException {
+    public ResponseEntity<Map<String, Object>> registerUser(@RequestBody @Valid User user) throws JsonProcessingException {
         userService.registerUser(user);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+        return ResponseEntity.status(HttpStatus.OK).body(
+                new ApiResponseBuilder()
+                        .status(HttpStatus.CREATED)
+                        .message("User registered successfully")
+                        .build()
+        );
     }
 
     @PostMapping(value="/login")
-    public ResponseEntity<User> login(@RequestBody User user) throws JsonProcessingException, SQLException {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody User user) throws JsonProcessingException, SQLException {
         userService.validateUser(user);
-        return ResponseEntity.status(HttpStatus.OK).body(user);
+        return ResponseEntity.status(HttpStatus.OK).body(
+                new ApiResponseBuilder()
+                        .status(HttpStatus.OK)
+                        .message("User logged in successfully")
+                        .build()
+        );
     }
 
 }
