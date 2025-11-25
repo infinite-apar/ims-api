@@ -1,5 +1,7 @@
 package com.apsharma.ims_api.user.controller;
 
+import com.apsharma.ims_api.user.dto.UserResponse;
+import com.apsharma.ims_api.user.mapper.UserMapper;
 import com.apsharma.ims_api.user.model.User;
 import com.apsharma.ims_api.user.service.UserService;
 import com.apsharma.ims_api.util.ApiResponseBuilder;
@@ -21,16 +23,23 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @GetMapping(value="/users")
     public ResponseEntity<Map<String, Object>> getAllUsers() throws SQLException{
         List<User> users = service.getAllUser();
-        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponseBuilder()
-                .status(HttpStatus.OK)
-                .message("Users fetched successfully")
-                .data(users)
-                .build()
-        );
+        List<UserResponse> userResponses = users.stream()
+                .map(userMapper::toResponse)
+                .toList();
 
+        return ResponseEntity.ok(
+                new ApiResponseBuilder()
+                        .status(HttpStatus.OK)
+                        .message("Users retrieved successfully")
+                        .data(userResponses)
+                        .build()
+        );
     }
 //
 //    @GetMapping("/{id}")
