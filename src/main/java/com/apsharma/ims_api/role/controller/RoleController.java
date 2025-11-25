@@ -33,11 +33,12 @@ public class RoleController {
 
     @PostMapping(value="/roles")
     public ResponseEntity<Map<String, Object>> save(@RequestBody Role role) {
-        repoService.saveRole(role);
+        Role savedRole = repoService.saveRole(role);
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 new ApiResponseBuilder()
                         .status(HttpStatus.CREATED)
                         .message("Role added successfully")
+                        .data(savedRole)
                         .build()
         );
     }
