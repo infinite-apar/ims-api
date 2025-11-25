@@ -9,10 +9,12 @@ import com.apsharma.ims_api.post.model.PostStatus;
 import com.apsharma.ims_api.post.repository.PostRepo;
 import com.apsharma.ims_api.user.model.User;
 import com.apsharma.ims_api.user.repository.UserRepo;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -32,7 +34,7 @@ public class PostService {
 
     public PostResponse create(PostRequest request) {
         User creator = userRepo.findById(request.getCreatedById())
-                .orElseThrow(() -> new IllegalArgumentException("Creator not found"));
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
         Post post = postMapper.toEntity(request, creator);
         Post saved = postRepo.save(post);
         return postMapper.toResponse(saved);
@@ -75,4 +77,20 @@ public class PostService {
         Post saved = postRepo.save(post);
         return postMapper.toResponse(saved);
     }
+
+    public Arrays getAllPostsByUserId(Long userId) {
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException(userId + "User not found"));
+        return postRepo.findAllByCreatedBy(user);
+    }
+
+    // delete
+    public void delete(Long id) {
+        Post post = postRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Post not found"));
+        postRepo.delete(post);
+    }
+    
+
+
 }

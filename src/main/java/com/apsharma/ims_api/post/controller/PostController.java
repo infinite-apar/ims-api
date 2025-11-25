@@ -82,4 +82,14 @@ public class PostController {
                         .build()
                 );
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> deletePost(@PathVariable Long id) {
+        postService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT)
+                .body(new ApiResponseBuilder()
+                        .status(HttpStatus.NO_CONTENT)
+                        .message("Post deleted successfully")
+                        .build()
+                );
+    }
 }

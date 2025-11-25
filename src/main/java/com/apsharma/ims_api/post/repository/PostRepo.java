@@ -6,11 +6,13 @@ import com.apsharma.ims_api.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface PostRepo extends JpaRepository<Post, Long> {
+    Arrays findAllByCreatedBy(User user);
 //    List<Post> findAllByStatus(PostStatus status);
 //    List<Post> findAllByCreatedBy(User createdBy);
 //    List<Post> findAllByCreatedByAndStatus(User createdBy, PostStatus status);
