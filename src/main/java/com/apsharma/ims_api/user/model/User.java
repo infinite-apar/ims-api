@@ -33,7 +33,7 @@ public class User {
     private String firstName;
     private String lastName;
 
-    @Email(regexp = ".+@infinite\\.com")
+    @Email(regexp = ".+@infinite\\.com" , message = "Email must be a valid Infinite email address")
     @Column(unique = true)
     @NotEmpty(message = "Email cannot be empty")
     private String email;

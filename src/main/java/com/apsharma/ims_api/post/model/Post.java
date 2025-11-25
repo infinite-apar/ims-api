@@ -37,7 +37,7 @@ public class Post {
     private PostStatus status = PostStatus.DRAFT; // Default value is DRAFT
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "created_by_id")
     private User createdBy;
 
